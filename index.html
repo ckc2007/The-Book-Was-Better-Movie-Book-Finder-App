@@ -1,72 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="node_modules/modern-normalize/modern-normalize.css">
-</head>
-<body>
-    <h1>The Book Was Better...</h1>
-    
-    <nav> 
-        <div class = "heading"></div>   
-        <a href="#movie search">Movie Search</a>
-            <a href="#book search">Book Search</a>
-            <a href="#my lists">My Lists</a>   
+    <link
+      rel="stylesheet"
+      href="node_modules/modern-normalize/modern-normalize.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+    <div class="container1">
+    <h1><p class = "title">The Book Was Better...</p></h1>
+
+    <nav>
+      <!-- <div class="heading"></div> -->
+      <a href="#movie search">Movie Search</a>
+      <a href="#book search">Book Search</a>
+      <a href="#my lists">My Lists</a>
     </nav>
 
-    <h3>Screen Adaptations</h3>
-<div class= "conainer">
-    <div class= "carousel">
-        <div class= "slider"></div>
+    <div class="container2">
+        <h3>Screen Adaptations</h3>
+      <div class="carousel">
+        <div class="slider"></div>
         <section>movie/book contnet 1</section>
         <section>movie/book contnet 2</section>
         <section>movie/book contnet 3</section>
         <section>movie/book contnet 4</section>
         <section>movie/book contnet 5</section>
-        </div>
-    </div>
-</div> 
-    <h1>...or was it?</h1>
-    <h3>Has your favorite book been turned into a movie? Click below to find out!</h3>
-
-    <div class= "button-group">
-        <button class="button" type="button">Title</button>
-        <button class="button" type="button">Author</button>
-        <button class="button" type="button">Search</button>
+      </div>
     </div>
 
-    <div class= "conainer">
-            <section>Image of movie</section>
-            <section>Facts About Movies? </section>
-            <section>Movie Review/Rotten Tomatoes</section>
-    </div>  
-    
-    <div class= "save-reviews">
-        <button class="button" type="button">Add to my watch list</button>
-        <button class="button" type="button">Similar movies</button>
+    <h1 class = "footer">...or was it?</h1>
+    <h3>
+      Has your favorite book been turned into a movie? Click below to find out!
+    </h3>
+
+    <div class="bookSearch">
+      <input type="text" placeholder="Title" class="title"></input>
+      <input type="text" placeholder="Author" class="author"></input>
+      <button class="button" type="button">Search</button>
+    </div>
+
+    <div class="conainer">
+      <section class = image>Image placeholder</section>
+      <section>Facts About Movies?</section>
+      <section>Movie Review/Rotten Tomatoes</section>
+    </div>
+
+    <div class="save-reviews">
+      <button class="button" type="button">Add to my watch list</button>
+      <button class="button" type="button">Similar movies</button>
     </div>
 
     <h3>Is your favorite movie based on a book? Click below to find out!</h3>
 
-    <div class= "movie-search">
-        <button class="button" type="button">Movie Title</button>
-        <button class="button" type="button">Search</button>
+    <div class="movieSearch">
+      <input type="text" placeholder="Movie Title" class="movieTitle"></input>
+      <button class="button" type="button">Search</button>
     </div>
 
-    <div class= "conainer">
-        <section>Image of book</section>
-        <section>Facts About Books? </section>
-        <section>Book Review</section>
-</div>
+    <div class="conainer">
+      <section>Image of book</section>
+      <section>Facts About Books?</section>
+      <section>Book Review</section>
+    </div>
 
-<div class= "book-search">
-    <button class="button" type="button">Add to my read list</button>
-    <button class="button" type="button">Similar books</button>
-</div>
-
-    
-</body>
+    <div class="book-search">
+      <button class="button" type="button">Add to my read list</button>
+      <button class="button" type="button">Similar books</button>
+    </div>
+    </div>
+  </body>
 </html>
