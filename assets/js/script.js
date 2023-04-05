@@ -25,12 +25,20 @@ function getMovieList() {
         var movies = data.results.filter((movie) =>
           movie.title.toLowerCase().includes(title.toLowerCase())
         );
+        // wrap the link code around the image code - append img to link
         movies.forEach((movie) => {
           var liEl = document.createElement("li");
           var link = document.createElement("a");
+          var imgEl = document.createElement("img");
           link.textContent = movie.title;
           link.href = `https://www.themoviedb.org/movie/${movie.id}`;
+          imgEl.src = `https://api.themoivedb.org/3/movie/${movie.id}/images?api_key=${apiKeyMovieDB}`;
+          imgEl.alt = `${movie.title}`;
+          // append image to link/text
+          link.appendChild(imgEl);
+          // append link and image to list element
           liEl.appendChild(link);
+          // append list element to the main list
           movieList.appendChild(liEl);
         });
       });
