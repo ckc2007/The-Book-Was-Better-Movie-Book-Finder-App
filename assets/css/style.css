@@ -1,0 +1,60 @@
+body {
+  font-size: 16px;
+  font-family: 'Libre Baskerville', serif;
+  background-color: bisque;
+  background-image: url("/../assets/images/90329.png");
+  margin:auto;
+
+/* <a href="https://www.freepik.com/free-psd/paper-mockup-design-background_4219876.htm#page=1&query=old%20paper&position=3">Image by rawpixel.com</a> on Freepik */
+}
+
+nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+h3 {
+  text-align: center;
+}
+
+.title {
+  margin-left: 25px;
+  font-weight: bolder;
+}
+
+.container1 {
+  background-color: white;
+  opacity: 75%;
+}
+
+.container2 {
+  text-align: center;
+}
+
+.bookSearch {
+  display: flex;
+  justify-content: center;
+}
+
+.movieSearch {
+  display: flex;
+  justify-content: center;
+}
+
+.title,
+.author,
+.movieTitle {
+  margin-inline: 5px;
+}
+
+.image {
+  border: 5px solid black;
+  width: 250px;
+  height: 250px;
+  margin-left: 50px;
+}
+
+.footer {
+  text-align: right;
+  margin-right: 25px;
+}
