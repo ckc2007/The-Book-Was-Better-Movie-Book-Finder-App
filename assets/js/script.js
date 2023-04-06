@@ -7,7 +7,7 @@ const searchForm = document.getElementById("search-form");
 // we only need one input for title (ether book or movie)
 const movieTitleInput = document.getElementById("movie-title");
 // using author list in the get author section
-const authorList = document. getElementById("author-list");
+const authorList = document.getElementById("author-list");
 // using bookList below in the google books section
 const bookList = document.getElementById("book-list");
 const movieList = document.getElementById("movie-list");
@@ -78,20 +78,22 @@ function getAuthor() {
         }
       })
       .then((response) => response.json())
-      .then((data)=> {
+      .then((data) => {
         // console.log(data);
         var author = data.crew.filter((person) => person.job === "Novel");
         // clear the booklist
         authorList.innerHTML = "";
         if (author.length > 0) {
-          author.forEach((author)=>{
+          author.forEach((author) => {
             var liEl = document.createElement("li");
             liEl.textContent = author.name;
             authorList.appendChild(liEl);
           });
-          
+        } else {
+          var liEl = document.createElement("li");
+          liEl.textContent = "No author found";
+          authorList.appendChild(liEl);
         }
-        }
-      })
+      });
   });
 }
