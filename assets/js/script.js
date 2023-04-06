@@ -12,7 +12,10 @@ const authorList = document.getElementById("author-list");
 const bookList = document.getElementById("book-list");
 const movieList = document.getElementById("movie-list");
 // book titles stored here
+const authorInput = document.getElementById("author-input");
+// use for save to local storage??
 var titlesArr = [];
+var authorsArr = [];
 
 // movies based on books
 function getMovieList() {
@@ -28,10 +31,11 @@ function getMovieList() {
         var movies = data.results.filter((movie) =>
           movie.title.toLowerCase().includes(title.toLowerCase())
         );
+        movieList.innerHTML = "";
         // wrap the link code around the image code - append img to link
         movies.forEach((movie) => {
           // console.log(movie.id);
-          movieList.innerHTML = "";
+
           // console.log(data);
           var liEl = document.createElement("li");
           var link = document.createElement("a");
@@ -114,7 +118,3 @@ searchForm.addEventListener("submit", (event) => {
       }
     });
 });
-
-// discover movies based on an author's works - see notes
-
-// Google Books API - will return a list of images of the books, blurb, author, and ISBN
