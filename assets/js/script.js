@@ -44,14 +44,25 @@ function getMovieList() {
       });
   });
 }
-
-// this function get author
+// this function gets the AUTHOR and call the getMovieList function for display
 // how?
 // is searches the movie db crew data for [job = 'novel'] << see api docs
 function getAuthor() {
   searchForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    var title = movieTitleInput.value;
-    titlesArr.push(title);
+    var movieTitle = movieTitleInput.value;
+    titlesArr.push(movieTitle);
+    // call the get movie list function so the list appears upon the search button being clicked
+    getMovieList();
+    // now do a fetch to get the name of the author
+    var url = `${r}?api_key=${apiKeyMovieDB}&query=${encodeURIComponent(
+      movieTitle
+    )}`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log(data);
+        // not for feature - we can use the author to again search for related films that have that author on crew (implement later)
+        
   });
 }
