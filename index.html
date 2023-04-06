@@ -47,30 +47,46 @@
             <section>Movie Review/Rotten Tomatoes</section>
     </div>  
     
-    <div class= "save-reviews">
-        <button class="button" type="button">Add to my watch list</button>
-        <button class="button" type="button">Similar movies</button>
-    </div>
-
+<article>
     <h3>Is your favorite movie based on a book? Click below to find out!</h3>
+</article>
 
-    <div class= "movie-search">
-        <input type="text" placeholder="Movie Title">
-        <button class="button" type="button">Search</button>
-    </div>
 
-    <div class= "container">
-        <section>Image of book</section>
-        <section>Facts About Books? </section>
-        <section>Book Review</section>
-</div>
+<form id= "search-form">
+        <label for="movie-title">Enter a book or movie title</label>
+        <input type="text" id="movie-title" name="movie-title" placeholder="Movie Title"/>
+        <button type="submit">Search</button>
+</form>
 
-<div class= "book-search">
+<ul id="book-list"></ul>
+<!-- movies based on books -->
+<h1>Movies Based on Books</h1>
+<ul id="movie-list"></ul>
+<h1>Enter Location Information</h1>
+<form>
+  <label for="title">Title:</label>
+  <input type="text" id="title" name="title" /><br />
+
+  <label for="author">Author:</label>
+  <input type="text" id="author" name="author" /><br />
+
+  <button type="button" onclick="searchBooks()">Search</button>
+</form>
+<div id="results"></div>
+
+<section class= "similar-movies">
+    <button class="button" type="button">Add to my watch list</button>
+    <button class="button" type="button">Similar Movies</button>
+</section>
+    
+<section class="similar-books">
     <button class="button" type="button">Add to my read list</button>
-    <button class="button" type="button">Similar books</button>
-</div>
+    <button class="button" type="button">Similar Books</button>
+</section>  
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="./assets/js/script.js"></script>
+
+<footer>The book was better or was it? 2023</footer>
 </body>
 </html>
