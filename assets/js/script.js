@@ -95,7 +95,8 @@ searchForm.addEventListener("submit", (event) => {
         (person) =>
           person.job === "Novel" ||
           person.job === "Writer" ||
-          person.job === "Author"
+          person.job === "Author" ||
+          person.job === "Short Story"
       );
       // clear the booklist
       authorList.innerHTML = "";
@@ -112,5 +113,7 @@ searchForm.addEventListener("submit", (event) => {
       }
     });
 });
+
+// discover movies based on an author's works - see notes
 
 // Google Books API - will return a list of images of the books, blurb, author, and ISBN
