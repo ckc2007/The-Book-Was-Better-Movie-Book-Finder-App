@@ -36,19 +36,20 @@ function getMovieList() {
           var link = document.createElement("a");
           var imgEl = document.createElement("img");
           var breakEl = document.createElement("br");
+          var blurbEl = document.createElement("p");
           link.textContent = movie.title;
           const imagePath = movie.poster_path;
           const posterUrl = `https://image.tmdb.org/t/p/w200/${imagePath}`;
           link.href = `https://www.themoviedb.org/movie/${movie.id}`;
-          // fix here debug url
           imgEl.src = posterUrl;
-          // imgEl.src = `https://api.themoivedb.org/3/movie/${movie.id}/images?api_key=${apiKeyMovieDB}`;
           imgEl.alt = `${movie.title}`;
+          blurbEl.innerText = movie.overview;
           // append image to link/text
           link.appendChild(breakEl);
           link.appendChild(imgEl);
           // append link and image to list element
           liEl.appendChild(link);
+          liEl.appendChild(blurbEl);
           // append list element to the main list
           movieList.appendChild(liEl);
         });
