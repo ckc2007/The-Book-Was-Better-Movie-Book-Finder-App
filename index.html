@@ -5,6 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
+    <link rel="stylesheet" href="node_modules/modern-normalize/modern-normalize.css">
+</head>
+<body>
+
+<header>
+    <h1>The Book Was Better...</h1>
+</header>    
+
+    <nav class="main-nav"> 
+        <div class = "heading"></div>   
+            <a href="#movie search">Movie Search</a>
+            <a href="#book search">Book Search</a>
+            <a href="#my lists">My Lists</a>   
+    </nav>
+<main>    
+    <h3>Screen Adaptations</h3>
+<div class= "container">
+    <div class= "carousel">
+        <div class= "slider"></div>
+        <section>movie/book content 1</section>
+        <section>movie/book content 2</section>
+        <section>movie/book content 3</section>
+        <section>movie/book content 4</section>
+        <section>movie/book content 5</section>
+        </div>
+    </div>
+</div> 
+    <h1>...or was it?</h1>
+    <h3>Has your favorite book been turned into a movie? Click below to find out!</h3>
+</main>
+    <section class= "button-group">
+        <input type="text" placeholder="Title">
+        <input type="text" placeholder="Author">
+        <button class="button" type="button">Search</button>
+    </section>
+
+    <div class= "container">
+            <section>Image of movie</section>
+            <section>Facts About Movies? </section>
+            <section>Movie Review/Rotten Tomatoes</section>
+    </div>  
+    
+<article>
+
     <link
       rel="stylesheet"
       href="node_modules/modern-normalize/modern-normalize.css"
@@ -62,7 +107,50 @@
       <button class="button" type="button">Similar movies</button>
     </div>
 
+
     <h3>Is your favorite movie based on a book? Click below to find out!</h3>
+</article>
+
+
+
+<form id= "search-form">
+        <label for="movie-title">Enter a book or movie title</label>
+        <input type="text" id="movie-title" name="movie-title" placeholder="Movie Title"/>
+        <button type="submit">Search</button>
+</form>
+
+<ul id="book-list"></ul>
+<!-- movies based on books -->
+<h1>Movies Based on Books</h1>
+<ul id="movie-list"></ul>
+<h1>Enter Location Information</h1>
+<form>
+  <label for="title">Title:</label>
+  <input type="text" id="title" name="title" /><br />
+
+  <label for="author">Author:</label>
+  <input type="text" id="author" name="author" /><br />
+
+  <button type="button" onclick="searchBooks()">Search</button>
+</form>
+<div id="results"></div>
+
+<section class= "similar-movies">
+    <button class="button" type="button">Add to my watch list</button>
+    <button class="button" type="button">Similar Movies</button>
+</section>
+    
+<section class="similar-books">
+    <button class="button" type="button">Add to my read list</button>
+    <button class="button" type="button">Similar Books</button>
+</section>  
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="./assets/js/script.js"></script>
+
+<footer>The book was better or was it? 2023</footer>
+</body>
+</html>
 
     <div class="movieSearch">
       <input type="text" placeholder="Movie Title" class="movieTitle"></input>
@@ -84,3 +172,4 @@
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
+
