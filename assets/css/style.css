@@ -54,12 +54,12 @@ button {
   border: 3px solid black;
   margin: 20px;
   height: 500px;
-  flex-shrink: ;
 }
 
 .bookSearch {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .container3 {
