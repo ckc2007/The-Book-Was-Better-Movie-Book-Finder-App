@@ -1,11 +1,19 @@
 body {
   font-size: 16px;
-  font-family: 'Libre Baskerville', serif;
+  font-family: "Libre Baskerville", serif;
   background-color: bisque;
   background-image: url("/../assets/images/90329.png");
-  margin:auto;
+  background-size: contain;
+  margin: auto;
+  display: flex;
+  justify-content: center;
 
-/* <a href="https://www.freepik.com/free-psd/paper-mockup-design-background_4219876.htm#page=1&query=old%20paper&position=3">Image by rawpixel.com</a> on Freepik */
+  /* <a href="https://www.freepik.com/free-psd/paper-mockup-design-background_4219876.htm#page=1&query=old%20paper&position=3">Image by rawpixel.com</a> on Freepik */
+}
+
+a {
+  border: 3px solid black;
+  padding: 5px 8px 5px 8px;
 }
 
 nav {
@@ -17,6 +25,19 @@ h3 {
   text-align: center;
 }
 
+button {
+  width: 75px;
+  border: 3px solid black;
+}
+
+.bookTitle,
+.author,
+.movieTitle {
+  height: 30px;
+  width: 300px;
+  border: 3px solid black;
+}
+
 .title {
   margin-left: 25px;
   font-weight: bolder;
@@ -25,15 +46,35 @@ h3 {
 .container1 {
   background-color: white;
   opacity: 75%;
+  width: 1024px;
 }
 
 .container2 {
   text-align: center;
+  border: 3px solid black;
+  margin: 20px;
+  height: 500px;
+  flex-shrink: ;
 }
 
 .bookSearch {
   display: flex;
   justify-content: center;
+}
+
+.container3 {
+  display: flex;
+  margin: 15px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.movieInfo,
+.movieReviews,
+.image {
+  border: 3px solid black;
+  width: 250px;
+  height: 250px;
 }
 
 .movieSearch {
@@ -45,13 +86,6 @@ h3 {
 .author,
 .movieTitle {
   margin-inline: 5px;
-}
-
-.image {
-  border: 5px solid black;
-  width: 250px;
-  height: 250px;
-  margin-left: 50px;
 }
 
 .footer {
