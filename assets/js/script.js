@@ -18,7 +18,7 @@ var titlesArr = [];
 function getMovieList() {
   // console.log(titlesArr)
   titlesArr.forEach((title) => {
-    var url = `${searchMovieUrl}?api_key=${apiKeyMovieDB}&query=${encodeURIComponent(
+    var url = `${searchMovieURL}?api_key=${apiKeyMovieDB}&query=${encodeURIComponent(
       title
     )}`;
     fetch(url)
