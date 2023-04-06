@@ -5,7 +5,7 @@ const searchCreditsMovieURL = `${baseMovieURL}/movie/{{id}}/credits`;
 // document selectors for displaying information to HTML
 const searchForm = document.getElementById("search-form");
 // we only need one input for title (ether book or movie)
-const titleInput = document.getElementById("title-input");
+const movieTitleInput = document.getElementById("movie-title");
 const bookList = document.getElementById("book-list");
 const movieList = document.getElementById("movie-list");
 // book titles stored here
@@ -51,7 +51,7 @@ function getMovieList() {
 function getAuthor() {
   searchForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    var title = titleInput.value;
+    var title = movieTitleInput.value;
     titlesArr.push(title);
   });
 }
