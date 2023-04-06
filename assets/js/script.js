@@ -31,6 +31,7 @@ function getMovieList() {
         // wrap the link code around the image code - append img to link
         movies.forEach((movie) => {
           // console.log(movie.id);
+          movieList.innerHTML = "";
           // console.log(data);
           var liEl = document.createElement("li");
           var link = document.createElement("a");
