@@ -63,6 +63,17 @@ function getAuthor() {
       .then((data) => {
         // console.log(data);
         // not for feature - we can use the author to again search for related films that have that author on crew (implement later)
-        
+        // take the first movie returned - this is usually the main one we want
+        if (data.results.length > 0) {
+          var movieId = data.results[0].id;
+          var creditsURL = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKeyMovieDB}`;
+          return fetch(creditsURL);
+        } else {
+          throw new Error(
+            `Sorry, can't find a movie with the title: "${movieTitle}"`
+          );
+        }
+      })
+      .then();
   });
 }
