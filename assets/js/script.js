@@ -58,7 +58,7 @@ function getAuthor() {
     // call the get movie list function so the list appears upon the search button being clicked
     getMovieList();
     // now do a fetch to get the name of the author
-    var url = `${r}?api_key=${apiKeyMovieDB}&query=${encodeURIComponent(
+    var url = `${baseMovieURL}?api_key=${apiKeyMovieDB}&query=${encodeURIComponent(
       movieTitle
     )}`;
     fetch(url)
