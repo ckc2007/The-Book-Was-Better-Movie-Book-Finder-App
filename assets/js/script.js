@@ -116,6 +116,7 @@ searchForm.addEventListener("submit", (event) => {
   titlesArr.push(movieTitle);
   // call the get movie list function so the list appears upon the search button being clicked
   getMovieList();
+  getBookList();
   // now do a fetch to get the name of the author
   const urlAuth = `${searchMovieURL}?api_key=${apiKeyMovieDB}&query=${encodeURIComponent(
     movieTitle
