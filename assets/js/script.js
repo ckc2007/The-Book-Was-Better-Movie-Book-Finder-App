@@ -25,7 +25,6 @@ const searchBookURL = `${baseBookURL}/volumes`;
 // var bookTitleInput = movieTitleInput.value;
 // author input will be what is returned by the movie search query for author
 
-
 // movies based on books
 function getMovieList() {
   // console.log(titlesArr)
@@ -76,6 +75,38 @@ function getBookList() {
     var url = `${searchBookURL}?q=${encodeURIComponent(
       title
     )}&key=${apiKeyBooks}`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        var books = data.items;
+        bookList.innerHTML = "";
+        books.forEach((book) => {
+          var liEl = document.createElement("li");
+          var titleEl = document.createElement("h3");
+          var authorEl = document.createElement("h4");
+          var link = document.createElement("a");
+          var imgEl = document.createElement("img");
+          var isbnEl = document.createElement("p");
+          var blurbEl = document.createElement("p");
+          titleEl.textContent = book.volumeInfo.title;
+          authorEl.textContent = book.volumeInfo.authors[0];
+          link.href = book.volumeInfo.infoLink;
+          imgEl.src = book.volumeInfo.imageLinks.smallThumbnail;
+          imgEl.alt = book.volumeInfo.title;
+          isbnEl.textContent = book.volumeInfo.industryIdentifiers[0];
+          blurbEl.textContent = book.volumeInfo.description;
+          link.appendChild(imgEl);
+          link.appendChild(titleEl);
+          liEl.appendChild(link);
+          liEl.appendChild(authorEl);
+          liEl.appendChild(blurbEl);
+          liEl.appendChild(isbnEl);
+          bookList.appendChild(liEl);
+        });
+      });
+  });
+}
 // this function gets the AUTHOR and call the getMovieList function for display
 // how?
 // is searches the movie db crew data for [job = 'novel'] << see api docs
