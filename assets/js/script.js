@@ -16,6 +16,14 @@ const authorInput = document.getElementById("author-input");
 // use for save to local storage??
 var titlesArr = [];
 var authorsArr = [];
+// book constants below
+const apiKeyBooks = "AIzaSyCglMf-pcXxWk1kbsxscoPr26PL-PStIYU";
+const baseBookURL = "https://www.googleapis.com/books/v1";
+const searchBookURL = `${baseBookURL}/volumes`;
+
+// book title for search will be the movie title input
+// var bookTitleInput = movieTitleInput.value;
+// author input will be what is returned by the movie search query for author
 
 // movies based on books
 function getMovieList() {
@@ -61,6 +69,44 @@ function getMovieList() {
       });
   });
 }
+
+function getBookList() {
+  titlesArr.forEach((title) => {
+    var url = `${searchBookURL}?q=${encodeURIComponent(
+      title
+    )}&key=${apiKeyBooks}`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        var books = data.items;
+        bookList.innerHTML = "";
+        books.forEach((book) => {
+          var liEl = document.createElement("li");
+          var titleEl = document.createElement("h3");
+          var authorEl = document.createElement("h4");
+          var link = document.createElement("a");
+          var imgEl = document.createElement("img");
+          var isbnEl = document.createElement("p");
+          var blurbEl = document.createElement("p");
+          titleEl.textContent = book.volumeInfo.title;
+          authorEl.textContent = book.volumeInfo.authors[0];
+          link.href = book.volumeInfo.infoLink;
+          imgEl.src = book.volumeInfo.imageLinks.smallThumbnail;
+          imgEl.alt = book.volumeInfo.title;
+          isbnEl.textContent = book.volumeInfo.industryIdentifiers[0];
+          blurbEl.textContent = book.volumeInfo.description;
+          link.appendChild(imgEl);
+          link.appendChild(titleEl);
+          liEl.appendChild(link);
+          liEl.appendChild(authorEl);
+          liEl.appendChild(blurbEl);
+          liEl.appendChild(isbnEl);
+          bookList.appendChild(liEl);
+        });
+      });
+  });
+}
 // this function gets the AUTHOR and call the getMovieList function for display
 // how?
 // is searches the movie db crew data for [job = 'novel'] << see api docs
@@ -70,6 +116,7 @@ searchForm.addEventListener("submit", (event) => {
   titlesArr.push(movieTitle);
   // call the get movie list function so the list appears upon the search button being clicked
   getMovieList();
+  getBookList();
   // now do a fetch to get the name of the author
   const urlAuth = `${searchMovieURL}?api_key=${apiKeyMovieDB}&query=${encodeURIComponent(
     movieTitle
