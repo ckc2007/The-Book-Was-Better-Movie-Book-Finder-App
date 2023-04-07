@@ -21,6 +21,11 @@ const apiKeyBooks = "AIzaSyCglMf-pcXxWk1kbsxscoPr26PL-PStIYU";
 const baseBookURL = "https://www.googleapis.com/books/v1";
 const searchBookURL = `${baseBookURL}/volumes`;
 
+// book title for search will be the movie title input
+// var bookTitleInput = movieTitleInput.value;
+// author input will be what is returned by the movie search query for author
+
+
 // movies based on books
 function getMovieList() {
   // console.log(titlesArr)
@@ -65,6 +70,12 @@ function getMovieList() {
       });
   });
 }
+
+function getBookList() {
+  titlesArr.forEach((title) => {
+    var url = `${searchBookURL}?q=${encodeURIComponent(
+      title
+    )}&key=${apiKeyBooks}`;
 // this function gets the AUTHOR and call the getMovieList function for display
 // how?
 // is searches the movie db crew data for [job = 'novel'] << see api docs
