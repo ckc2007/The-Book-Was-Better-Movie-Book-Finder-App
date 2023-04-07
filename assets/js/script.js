@@ -16,6 +16,10 @@ const authorInput = document.getElementById("author-input");
 // use for save to local storage??
 var titlesArr = [];
 var authorsArr = [];
+// book constants below
+const apiKeyBooks = "AIzaSyCglMf-pcXxWk1kbsxscoPr26PL-PStIYU";
+const baseBookURL = "https://www.googleapis.com/books/v1";
+const searchBookURL = `${baseBookURL}/volumes`;
 
 // movies based on books
 function getMovieList() {
