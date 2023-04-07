@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
     <link rel="stylesheet" href="node_modules/modern-normalize/modern-normalize.css">
 </head>
 <body>
@@ -37,8 +36,8 @@
     <h3>Has your favorite book been turned into a movie? Click below to find out!</h3>
 </main>
     <section class= "button-group">
-        <input type="text" placeholder="Title">
-        <input type="text" placeholder="Author">
+        <input id="movie-title"type="text" placeholder="Title">
+        <input id="author-input" type="text" placeholder="Author">
         <button class="button" type="button">Search</button>
     </section>
 
@@ -49,68 +48,8 @@
     </div>  
     
 <article>
-
-    <link
-      rel="stylesheet"
-      href="node_modules/modern-normalize/modern-normalize.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/css/style.css">
-  </head>
-  <body>
-    <div class="container1">
-    <h1><p class = "title">The Book Was Better...</p></h1>
-
-    <nav>
-      <!-- <div class="heading"></div> -->
-      <a href="#movie search">Movie Search</a>
-      <a href="#book search">Book Search</a>
-      <a href="#my lists">My Lists</a>
-    </nav>
-
-    <div class="container2">
-        <h3>Screen Adaptations</h3>
-      <div class="carousel">
-        <div class="slider"></div>
-        <section>movie/book contnet 1</section>
-        <section>movie/book contnet 2</section>
-        <section>movie/book contnet 3</section>
-        <section>movie/book contnet 4</section>
-        <section>movie/book contnet 5</section>
-      </div>
-    </div>
-
-    <h1 class = "footer">...or was it?</h1>
-    <h3>
-      Has your favorite book been turned into a movie? Click below to find out!
-    </h3>
-
-    <div class="bookSearch">
-      <input type="text" placeholder="Title" class="bookTitle"></input>
-      <input type="text" placeholder="Author" class="author"></input>
-      <button class="button" type="button">Search</button>
-    </div>
-
-    <div class="container3">
-      <section class = "image">Image placeholder</section>
-      <section class = "movieInfo">Facts About Movies?</section>
-      <section class = "movieReviews">Movie Review/Rotten Tomatoes</section>
-    </div>
-
-    <div class="save-reviews">
-      <button class="btn-watchList" type="button">Add to my watch list</button>
-      <button class="button" type="button">Similar movies</button>
-    </div>
-
-
     <h3>Is your favorite movie based on a book? Click below to find out!</h3>
 </article>
-
 
 
 <form id= "search-form">
@@ -120,20 +59,6 @@
 </form>
 
 <ul id="book-list"></ul>
-<!-- movies based on books -->
-<h1>Movies Based on Books</h1>
-<ul id="movie-list"></ul>
-<h1>Enter Location Information</h1>
-<form>
-  <label for="title">Title:</label>
-  <input type="text" id="title" name="title" /><br />
-
-  <label for="author">Author:</label>
-  <input type="text" id="author" name="author" /><br />
-
-  <button type="button" onclick="searchBooks()">Search</button>
-</form>
-<div id="results"></div>
 
 <section class= "similar-movies">
     <button class="button" type="button">Add to my watch list</button>
@@ -151,25 +76,3 @@
 <footer>The book was better or was it? 2023</footer>
 </body>
 </html>
-
-    <div class="movieSearch">
-      <input type="text" placeholder="Movie Title" class="movieTitle"></input>
-      <button class="button" type="button">Search</button>
-    </div>
-
-    <div class="conainer">
-      <section>Image of book</section>
-      <section>Facts About Books?</section>
-      <section>Book Review</section>
-    </div>
-
-    <div class="book-search">
-      <button class="btn-readList" type="button">Add to my read list</button>
-      <button class="button" type="button">Similar books</button>
-    </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="./assets/js/script.js"></script>
-  </body>
-</html>
-
