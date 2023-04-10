@@ -110,3 +110,9 @@ button {
   width: 100%;
   text-align: center;
 }
+
+li {
+  border: 2px solid black;
+  padding: 5px;
+  margin: 5px;
+}
