@@ -260,11 +260,11 @@ const getAllTimeTopMovies = () => {
         // slice the list to show up to 10 movies that have an author
         // remember this is an array
         const top5Movies = movieList.slice(0, 11);
-        // console.log(top5Movies);
+        console.log(top5Movies);
         const movieEl = top5Movies.map((movie) => {
           const posterUrl = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;
           const movieUrl = `https://www.themoviedb.org/movie/${movie.id}`;
-          return `<a class="carousel-item" href="${movieUrl}"><img src="${posterUrl}" /></a>`;
+          return `<a href="${movieUrl}"><img src="${posterUrl}" /></a>`;
         });
         // concats the list of links/images
         return movieEl.join("");
