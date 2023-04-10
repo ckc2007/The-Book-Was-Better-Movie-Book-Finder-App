@@ -14,7 +14,7 @@ const movieList = document.getElementById("movie-list");
 // book titles stored here
 const authorInput = document.getElementById("author-input");
 // use for save to local storage??
-var searchHistoryListEl = document.querySelector("#search-history");
+var searchHistoryListEl = document.getElementById("search-history");
 var savedCityBtn = document.querySelector(".btn");
 var clearSearchBtn = document.querySelector("#clearBtn");
 var titlesArr = [];
@@ -35,6 +35,42 @@ function title(string) {
     })
     .join(" ");
 }
+
+// local storage
+if (localStorage.getItem("search-history") !== null) {
+  searchHistoryArr = JSON.parse(localStorage.getItem("search-history"));
+  searchHistoryListEl.innerHTML = "";
+  console.log(searchHistoryArr);
+  renderSavedSearch();
+}
+// add arr to local storage
+function saveLocal() {
+  localStorage.setItem("search-history", JSON.stringify(searchHistoryArr));
+}
+
+//   add title to the saved search list
+function renderSavedSearch() {
+  searchHistoryListEl.innerHTML = "";
+  console.log(searchHistoryArr);
+  for (var i = 0; i < searchHistoryArr.length; i++) {
+    var buttonEl = document.createElement("button");
+    buttonEl.setAttribute("id", `${searchHistoryArr[i]}`);
+    buttonEl.classList.add("btn");
+    buttonEl.textContent = searchHistoryArr[i].toString();
+    searchHistoryListEl.appendChild(buttonEl);
+    var breakEl = document.createElement("br");
+    searchHistoryListEl.appendChild(breakEl);
+  }
+  saveLocal();
+}
+
+renderSavedSearch();
+
+clearSearchBtn.addEventListener("click", function () {
+  localStorage.removeItem("search-history");
+  searchHistoryListEl.innerHTML = "";
+  searchHistoryArr = [];
+});
 // book title for search will be the movie title input
 // var bookTitleInput = movieTitleInput.value;
 // author input will be what is returned by the movie search query for author
@@ -92,7 +128,7 @@ function getBookList() {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         var books = data.items;
         bookList.innerHTML = "";
         books.forEach((book) => {
@@ -129,6 +165,8 @@ searchForm.addEventListener("submit", (event) => {
   var movieTitle = title(movieTitleInput.value);
   searchHistoryArr.push(movieTitle);
   titlesArr.push(movieTitle);
+  bookList.innerHTML = "";
+  movieList.innerHTML = "";
   // call the get movie list function so the list appears upon the search button being clicked
   getMovieList();
   getBookList();
@@ -136,6 +174,8 @@ searchForm.addEventListener("submit", (event) => {
   const urlAuth = `${searchMovieURL}?api_key=${apiKeyMovieDB}&query=${encodeURIComponent(
     movieTitle
   )}`;
+  saveLocal();
+  renderSavedSearch();
 
   fetch(urlAuth)
     // debug here - ok fixed - was url issue above - search not base
@@ -219,39 +259,4 @@ getAllTimeTopMovies().then((html) => {
   // insert the HTML into the DOM
   const container = document.getElementById("movie-container");
   container.innerHTML = html;
-});
-
-// local storage
-if (localStorage.getItem("search-history") !== null) {
-  searchHistoryArr = JSON.parse(localStorage.getItem("search-history"));
-  searchHistoryListEl.innerHTML = "";
-  console.log(searchHistoryArr);
-  renderSavedSearch();
-}
-// add arr to local storage
-function saveLocal() {
-  localStorage.setItem("search-history", JSON.stringify(searchHistoryArr));
-}
-//   add title to the saved search list
-function renderSavedSearch() {
-  searchHistoryListEl.innerHTML = "";
-  console.log(searchHistoryArr);
-  for (var i = 0; i < searchHistoryArr.length; i++) {
-    var buttonEl = document.createElement("button");
-    buttonEl.setAttribute("id", `${searchHistoryArr[i]}`);
-    buttonEl.classList.add("btn");
-    buttonEl.textContent = searchHistoryArr[i].toString();
-    searchHistoryListEl.appendChild(buttonEl);
-    var breakEl = document.createElement("br");
-    searchHistoryListEl.appendChild(breakEl);
-  }
-  saveLocal();
-}
-
-renderSavedSearch();
-
-clearSearchBtn.addEventListener("click", function () {
-  localStorage.removeItem("search-history");
-  searchHistoryListEl.innerHTML = "";
-  searchHistoryArr = [];
 });
