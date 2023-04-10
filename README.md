@@ -104,3 +104,4 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 - Background Image by [rawpixel]("https://www.freepik.com/free-photo/vintage-textured-watercolor-paper-background_15599882.htm#query=parchment&position=7&from_view=keyword&track=sph") on Freepik
 - [Materialize](https://materializecss.com/getting-started.html)
 - [TheMovieDB API](https://developers.themoviedb.org/3/getting-started/introduction)
+- [Google Books API](https://developers.google.com/books)
