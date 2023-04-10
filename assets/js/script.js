@@ -264,7 +264,7 @@ const getAllTimeTopMovies = () => {
         const movieEl = top5Movies.map((movie) => {
           const posterUrl = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;
           const movieUrl = `https://www.themoviedb.org/movie/${movie.id}`;
-          return `<a href="${movieUrl}"><img src="${posterUrl}" /></a>`;
+          return `<a class="carousel-item" href="${movieUrl}"><img src="${posterUrl}" /></a>`;
         });
         // concats the list of links/images
         return movieEl.join("");
