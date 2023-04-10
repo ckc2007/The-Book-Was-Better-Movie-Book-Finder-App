@@ -25,6 +25,16 @@ const apiKeyBooks = "AIzaSyCglMf-pcXxWk1kbsxscoPr26PL-PStIYU";
 const baseBookURL = "https://www.googleapis.com/books/v1";
 const searchBookURL = `${baseBookURL}/volumes`;
 
+// need a tile case function here:
+function title(string) {
+  return string
+    .toLowerCase()
+    .split(" ")
+    .map(function (word) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
+}
 // book title for search will be the movie title input
 // var bookTitleInput = movieTitleInput.value;
 // author input will be what is returned by the movie search query for author
@@ -116,7 +126,8 @@ function getBookList() {
 // is searches the movie db crew data for [job = 'novel'] << see api docs
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  var movieTitle = movieTitleInput.value;
+  var movieTitle = title(movieTitleInput.value);
+  searchHistoryArr.push(movieTitle);
   titlesArr.push(movieTitle);
   // call the get movie list function so the list appears upon the search button being clicked
   getMovieList();
@@ -238,17 +249,6 @@ function renderSavedSearch() {
 }
 
 renderSavedSearch();
-
-// need a tile case function here:
-// function title(string) {
-//   return string
-//     .toLowerCase()
-//     .split(" ")
-//     .map(function (word) {
-//       return word.charAt(0).toUpperCase() + word.slice(1);
-//     })
-//     .join(" ");
-// }
 
 clearSearchBtn.addEventListener("click", function () {
   localStorage.removeItem("search-history");
