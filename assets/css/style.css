@@ -1,6 +1,7 @@
 body {
   font-size: 16px;
   font-family: "Libre Baskerville", serif;
+  color: #8f8787;
   background-color: bisque;
   background-image: url("../images/Parchment.png");
   background-size: contain;
@@ -17,6 +18,10 @@ a {
 nav {
   display: flex;
   justify-content: space-evenly;
+}
+
+h2 {
+  text-align: right;
 }
 
 h3,
@@ -59,17 +64,39 @@ button {
   height: 500px;
 }
 
-.bookSearch {
+#bookSearch {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
-.container3 {
+label,
+input {
+  font-size: 22px;
+}
+
+hr {
+  width: 90%;
+}
+
+.searchContent {
   display: flex;
+  flex-direction: row;
   margin: 15px;
   justify-content: space-evenly;
   flex-wrap: wrap;
+}
+
+.form,
+.searchList,
+.bookContainer,
+.movieContainer {
+  width: 400px;
+  max-height: fit-content;
+  border: 2px solid black;
+  border-radius: 3px;
+  text-align: center;
 }
 
 .movieInfo,
@@ -103,6 +130,12 @@ button {
   height: 100%;
   margin: 0;
 }
+
+button {
+  width: fit-content;
+  padding: 8px;
+}
+
 /* added this for save list button display */
 .btn {
   color: black;
@@ -115,19 +148,16 @@ button {
 }
 
 .btn:hover {
-  background-color: turquoise;
+  background-color: #a6e4e7;
   transition: all 0.3s ease-in-out;
   font-size: 120%;
 }
 
 button:hover {
-  background-color: turquoise;
+  background-color:#a6e4e7;
   transition: all 0.3s ease-in-out;
   font-size: 110%;
-}
-
-.navBtn {
-  /* border: 3px solid black; */
+  cursor: pointer;
 }
 
 .navBtn:hover {
@@ -135,13 +165,16 @@ button:hover {
   transition: all 0.3s ease-in-out;
   font-size: 110%;
   font-weight: bolder;
-  color: aqua;
+  color: black;
+  background-color: #ebcbae;
+  cursor: pointer;
 }
 
 #clearBtn:hover {
-  background-color: magenta;
+  background-color: #a6e4e7;
   transition: all 0.3s ease-in-out;
   font-size: 110%;
+  cursor: pointer;
 }
 
 li {

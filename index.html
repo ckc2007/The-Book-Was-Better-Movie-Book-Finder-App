@@ -44,41 +44,54 @@
           </div>
         </div>
         <h2>...or was it?</h2>
-        <h3>
-          Has your favorite book been turned into a movie? Search below to find
-          out!
-        </h3>
+        <hr />
+        <h5>
+          Has your favorite book been turned into a movie?
+          <br />
+          Search below to find out!
+        </h5>
         <div id="bookSearch">
-          <form id="search-form">
-            <label for="movie-title">Enter a book or movie title:</label>
-            <input
-              type="text"
-              class="bookTitle"
-              id="movie-title"
-              name="movie-title"
-              placeholder="Title"
-            />
-            <!-- <input
+          <div class="form">
+            <form id="search-form">
+              <label for="movie-title">Enter a book or movie title:</label>
+              <input
+                type="text"
+                class="bookTitle"
+                id="movie-title"
+                name="movie-title"
+                placeholder="Title"
+              />
+              <!-- <input
               type="text"sd
               class="author"
               id="author-name"
               name="author-name"
               placeholder="Author"
             /> -->
-            <button type="submit" class="button">Search</button>
-          </form>
-          <section id="search-container">
-            <h5>Saved Search History:</h5>
-            <ul id="search-history"></ul>
-          </section>
-          <button id="clearBtn" class="clearBtn">Clear Search History</button>
-          <!-- movies based on books -->
-          <h4>The Author: <span id="author-list"></span></h4>
-          <h3 id="movie-list-h3">The Movies Based on The Book</h3>
-          <ul id="movie-list"></ul>
+              <button type="submit" class="button">Search</button>
+            </form>
+          </div>
+          <div class="searchList">
+            <section id="search-container">
+              <h5>Previous Searches:</h5>
+              <ul id="search-history"></ul>
+            </section>
+            <button id="clearBtn" class="clearBtn">Clear Search History</button>
+          </div>
+        </div>
+        <!-- movies based on books -->
+        <h4>Author Name: <span id="author-list"></span></h4>
+        <hr />
+        <div class="searchContent">
+          <div class="movieContainer">
+            <h3 id="movie-list-h3">The Movies</h3>
+            <ul id="movie-list"></ul>
+          </div>
           <!-- book list -->
-          <h3 id="book-list-h3">The Books</h3>
-          <ul id="book-list"></ul>
+          <div class="bookContainer">
+            <h3 id="book-list-h3">The Books</h3>
+            <ul id="book-list"></ul>
+          </div>
         </div>
         <!-- <div class="container3">
           <section class="image">Image placeholder</section>
@@ -95,8 +108,6 @@
           <button class="button" type="button">Add to my read list</button>
           <button class="button" type="button">Similar Books</button>
         </section> -->
-
-        <footer>The book was better or was it? 2023</footer>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="./assets/js/script.js"></script>
