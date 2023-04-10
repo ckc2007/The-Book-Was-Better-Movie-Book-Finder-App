@@ -13,6 +13,7 @@ This application uses The Movie DB API and Google Books API
 ```
 
 [themoviedb.org](https://www.themoviedb.org/)
+
 [developers.google.com/books](https://developers.google.com/books)
 
 ## User Story
