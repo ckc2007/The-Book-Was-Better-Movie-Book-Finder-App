@@ -7,7 +7,7 @@ The Book was Better is a web application that allows book lovers to easily searc
 ## Description
 
 ```
-As bootcamp students, we were given a project assignment to create an interactive front-end application. As a team, we developed an application called The Book was Better. Users will be greeted on load with a selection of trending film adaptations. A user can then search to see if a book they've read has been made into a movie. If it has, then they will be presented with a list of other movies that this author has been a part of, as well as a list of  similar movies.
+As bootcamp students, we were given a project assignment to create an interactive front-end application. As a team, we developed an application called The Book was Better. Users will be greeted on load with a selection of trending film adaptations. A user can then search to see if a book they've read has been made into a movie. If it has, then they will be presented with a list of other movies that this author has been a part of, as well as a list of similar movies.
 
 This application uses The Movie DB API and Google Books API
 ```
