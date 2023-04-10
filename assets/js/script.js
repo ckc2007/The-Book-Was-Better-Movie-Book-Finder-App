@@ -41,7 +41,7 @@ function title(string) {
 if (localStorage.getItem("search-history") !== null) {
   searchHistoryArr = JSON.parse(localStorage.getItem("search-history"));
   searchHistoryListEl.innerHTML = "";
-  console.log(searchHistoryArr);
+  // console.log(searchHistoryArr);
   renderSavedSearch();
 }
 
@@ -53,7 +53,7 @@ function saveLocal() {
 // add title to the saved search list
 function renderSavedSearch() {
   searchHistoryListEl.innerHTML = "";
-  console.log(searchHistoryArr);
+  // console.log(searchHistoryArr);
   for (var i = 0; i < searchHistoryArr.length; i++) {
     var buttonEl = document.createElement("button");
     buttonEl.setAttribute("id", `${searchHistoryArr[i]}`);
