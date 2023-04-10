@@ -14,7 +14,7 @@ const bookList = document.getElementById("book-list");
 const movieList = document.getElementById("movie-list");
 // book titles stored here
 const authorInput = document.getElementById("author-input");
-// use for save to local storage??
+// use for save to local storage
 var searchHistoryListEl = document.getElementById("search-history");
 var savedCityBtn = document.querySelector(".btn");
 var clearSearchBtn = document.querySelector("#clearBtn");
@@ -26,7 +26,7 @@ const apiKeyBooks = "AIzaSyCglMf-pcXxWk1kbsxscoPr26PL-PStIYU";
 const baseBookURL = "https://www.googleapis.com/books/v1";
 const searchBookURL = `${baseBookURL}/volumes`;
 
-// need a tile case function here:
+// need a tile case function to correct for caps in input field:
 function title(string) {
   return string
     .toLowerCase()
@@ -44,12 +44,13 @@ if (localStorage.getItem("search-history") !== null) {
   console.log(searchHistoryArr);
   renderSavedSearch();
 }
+
 // add arr to local storage
 function saveLocal() {
   localStorage.setItem("search-history", JSON.stringify(searchHistoryArr));
 }
 
-//   add title to the saved search list
+// add title to the saved search list
 function renderSavedSearch() {
   searchHistoryListEl.innerHTML = "";
   console.log(searchHistoryArr);
@@ -67,16 +68,14 @@ function renderSavedSearch() {
 
 renderSavedSearch();
 
+// clear search button functionality
 clearSearchBtn.addEventListener("click", function () {
   localStorage.removeItem("search-history");
   searchHistoryListEl.innerHTML = "";
   searchHistoryArr = [];
 });
-// book title for search will be the movie title input
-// var bookTitleInput = movieTitleInput.value;
-// author input will be what is returned by the movie search query for author
 
-// movies based on books
+// movies based on books list
 function getMovieList() {
   // console.log(titlesArr)
   titlesArr.forEach((title) => {
@@ -121,6 +120,7 @@ function getMovieList() {
   });
 }
 
+// get books list
 function getBookList() {
   titlesArr.forEach((title) => {
     var url = `${searchBookURL}?q=${encodeURIComponent(
@@ -138,6 +138,7 @@ function getBookList() {
           var authorEl = document.createElement("h5");
           var link = document.createElement("a");
           var imgEl = document.createElement("img");
+          // isbn not working - debug later
           // var isbnEl = document.createElement("p");
           var blurbEl = document.createElement("p");
           titleEl.textContent = book.volumeInfo.title;
@@ -158,6 +159,7 @@ function getBookList() {
       });
   });
 }
+
 // this function gets the AUTHOR and call the getMovieList function for display
 // how?
 // is searches the movie db crew data for [job = 'novel'] << see api docs
@@ -223,6 +225,8 @@ searchForm.addEventListener("submit", (event) => {
     });
 });
 
+// convert to async function?
+// this populates the header with all the top rated films based on books (filtered)
 const getAllTimeTopMovies = () => {
   return fetch(
     `https://api.themoviedb.org/3/discover/movie?sort_by=vote_average.desc&vote_count.gte=1000&api_key=${apiKeyMovieDB}`
