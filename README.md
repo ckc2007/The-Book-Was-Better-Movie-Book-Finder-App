@@ -31,7 +31,7 @@ GIVEN I am using a book/movie finder app with a text input for a book title
 WHEN I search for a book title
 THEN I am presented with a list of films adapted from that book, and a list of books that match the title criteria
 WHEN I click on the search button
-THEN my search is saved in a list
+THEN my search is saved in a list and my search is displayed in "The Movies" and "The Books" columns.
 WHEN I click on one of my saved searches
 THEN I am again presented with a list of film adaptations and an acompanying booklist that match the search criteria
 WHEN I refresh the page
