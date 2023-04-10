@@ -297,7 +297,7 @@ $(document).on("click", ".btn", function () {
   // renderSavedSearch();
 
   fetch(urlAuth)
-    // debug here - ok fixed - was url issue above - search not base
+    // debug here - ok fixed - was url issue above - "search url" not "base url"
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
