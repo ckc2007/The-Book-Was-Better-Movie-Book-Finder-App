@@ -299,6 +299,7 @@ $(document).on("click", ".btn", function () {
         console.log(creditsURL);
         return fetch(creditsURL);
       } else {
+        // can't use return - use throw to stop the function here?
         throw new Error(
           `Sorry, can't find a movie with the title: "${movieTitle}"`
         );
