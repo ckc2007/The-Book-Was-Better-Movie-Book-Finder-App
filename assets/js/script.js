@@ -21,6 +21,52 @@ const apiKeyBooks = "AIzaSyCglMf-pcXxWk1kbsxscoPr26PL-PStIYU";
 const baseBookURL = "https://www.googleapis.com/books/v1";
 const searchBookURL = `${baseBookURL}/volumes`;
 
+// // local storage
+// if (localStorage.getItem("search-history") !== null) {
+//   searchHistoryArr = JSON.parse(localStorage.getItem("search-history"));
+//   searchHistoryListEl.innerHTML = "";
+//   console.log(searchHistoryArr);
+//   renderSavedSearch();
+// }
+// // add arr to local storage
+// function saveLocal() {
+//   localStorage.setItem("search-history", JSON.stringify(searchHistoryArr));
+// }
+// //   add city to the saved search list
+// function renderSavedSearch() {
+//   searchHistoryListEl.innerHTML = "";
+//   console.log(searchHistoryArr);
+//   for (var i = 0; i < searchHistoryArr.length; i++) {
+//     var buttonEl = document.createElement("button");
+//     buttonEl.setAttribute("id", `${searchHistoryArr[i]}`);
+//     buttonEl.classList.add("btn");
+//     buttonEl.textContent = searchHistoryArr[i].toString();
+//     searchHistoryListEl.appendChild(buttonEl);
+//     var breakEl = document.createElement("br");
+//     searchHistoryListEl.appendChild(breakEl);
+//   }
+//   saveLocal();
+// }
+
+// renderSavedSearch();
+
+// need a tile case function here:
+// function title(string) {
+//   return string
+//     .toLowerCase()
+//     .split(" ")
+//     .map(function (word) {
+//       return word.charAt(0).toUpperCase() + word.slice(1);
+//     })
+//     .join(" ");
+// }
+
+// clearSearchBtn.addEventListener("click", function () {
+//   localStorage.removeItem("search-history");
+//   searchHistoryListEl.innerHTML = "";
+//   searchHistoryArr = [];
+// });
+
 // book title for search will be the movie title input
 // var bookTitleInput = movieTitleInput.value;
 // author input will be what is returned by the movie search query for author
@@ -164,4 +210,44 @@ searchForm.addEventListener("submit", (event) => {
         authorList.appendChild(liEl);
       }
     });
+});
+
+const getAllTimeTopMovies = () => {
+  return fetch(
+    `https://api.themoviedb.org/3/discover/movie?sort_by=vote_average.desc&vote_count.gte=1000&api_key=${apiKeyMovieDB}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      const moviePromises = data.results.map((movie) => {
+        const creditsURL = `https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${apiKeyMovieDB}`;
+        return fetch(creditsURL).then((response) => response.json());
+      });
+
+      return Promise.all(moviePromises).then((creditsData) => {
+        const movieList = data.results.filter((movie, index) => {
+          const crew = creditsData[index].crew;
+          const author = crew.find(
+            (person) =>
+              person.job === "Novel" ||
+              person.job === "Writer" ||
+              person.job === "Author" ||
+              person.job === "Short Story"
+          );
+          return author;
+        });
+        const top5Movies = movieList.slice(0, 11);
+        const movieElements = top5Movies.map((movie) => {
+          const posterUrl = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;
+          const movieUrl = `https://www.themoviedb.org/movie/${movie.id}`;
+          return `<a href="${movieUrl}"><img src="${posterUrl}" /></a>`;
+        });
+        return movieElements.join("");
+      });
+    });
+};
+
+getAllTimeTopMovies().then((html) => {
+  // insert the HTML into the DOM
+  const container = document.getElementById("movie-container");
+  container.innerHTML = html;
 });
