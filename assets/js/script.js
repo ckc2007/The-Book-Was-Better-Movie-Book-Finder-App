@@ -200,7 +200,7 @@ searchForm.addEventListener("submit", (event) => {
       authorList.innerHTML = "";
       if (author.length > 0) {
         author.forEach((author) => {
-          var liEl = document.createElement("li");
+          var liEl = document.createElement("p");
           liEl.textContent = author.name;
           authorList.appendChild(liEl);
         });
