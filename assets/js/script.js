@@ -14,6 +14,9 @@ const movieList = document.getElementById("movie-list");
 // book titles stored here
 const authorInput = document.getElementById("author-input");
 // use for save to local storage??
+var searchHistoryListEl = document.querySelector("#search-history");
+var savedCityBtn = document.querySelector(".btn");
+var clearSearchBtn = document.querySelector("#clearBtn");
 var titlesArr = [];
 var authorsArr = [];
 var searchHistoryArr = [];
@@ -21,7 +24,6 @@ var searchHistoryArr = [];
 const apiKeyBooks = "AIzaSyCglMf-pcXxWk1kbsxscoPr26PL-PStIYU";
 const baseBookURL = "https://www.googleapis.com/books/v1";
 const searchBookURL = `${baseBookURL}/volumes`;
-
 
 // book title for search will be the movie title input
 // var bookTitleInput = movieTitleInput.value;
@@ -208,7 +210,6 @@ getAllTimeTopMovies().then((html) => {
   container.innerHTML = html;
 });
 
-
 // local storage
 if (localStorage.getItem("search-history") !== null) {
   searchHistoryArr = JSON.parse(localStorage.getItem("search-history"));
@@ -220,7 +221,7 @@ if (localStorage.getItem("search-history") !== null) {
 function saveLocal() {
   localStorage.setItem("search-history", JSON.stringify(searchHistoryArr));
 }
-//   add city to the saved search list
+//   add title to the saved search list
 function renderSavedSearch() {
   searchHistoryListEl.innerHTML = "";
   console.log(searchHistoryArr);
