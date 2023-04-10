@@ -229,19 +229,19 @@ const getAllTimeTopMovies = () => {
           const author = crew.find(
             (person) =>
               person.job === "Novel" ||
-              person.job === "Writer" ||
               person.job === "Author" ||
               person.job === "Short Story"
           );
           return author;
         });
         const top5Movies = movieList.slice(0, 11);
-        const movieElements = top5Movies.map((movie) => {
+        const movieEl = top5Movies.map((movie) => {
           const posterUrl = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;
           const movieUrl = `https://www.themoviedb.org/movie/${movie.id}`;
           return `<a href="${movieUrl}"><img src="${posterUrl}" /></a>`;
         });
-        return movieElements.join("");
+        // sends the entire list to the container
+        return movieEl.join("");
       });
     });
 };
