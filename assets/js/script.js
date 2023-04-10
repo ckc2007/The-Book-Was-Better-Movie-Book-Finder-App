@@ -129,7 +129,6 @@ function getBookList() {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data);
         var books = data.items;
         bookList.innerHTML = "";
         books.forEach((book) => {
@@ -138,27 +137,30 @@ function getBookList() {
           var authorEl = document.createElement("h5");
           var link = document.createElement("a");
           var imgEl = document.createElement("img");
-          // isbn not working - debug later
-          // var isbnEl = document.createElement("p");
           var blurbEl = document.createElement("p");
           titleEl.textContent = book.volumeInfo.title;
           authorEl.textContent = book.volumeInfo.authors[0];
           link.href = book.volumeInfo.infoLink;
-          imgEl.src = book.volumeInfo.imageLinks.smallThumbnail;
-          imgEl.alt = book.volumeInfo.title;
-          // isbnEl.textContent = book.volumeInfo.industryIdentifiers[0];
+          if (book.volumeInfo.imageLinks) {
+            imgEl.src = book.volumeInfo.imageLinks.smallThumbnail;
+            imgEl.alt = book.volumeInfo.title;
+          } else {
+            imgEl.src = "https://via.placeholder.com/150";
+            imgEl.alt = "No Image Available";
+          }
           blurbEl.textContent = book.volumeInfo.description;
           link.appendChild(imgEl);
           link.appendChild(titleEl);
           liEl.appendChild(link);
           liEl.appendChild(authorEl);
           liEl.appendChild(blurbEl);
-          // liEl.appendChild(isbnEl);
           bookList.appendChild(liEl);
         });
       });
   });
 }
+
+
 
 // this function gets the AUTHOR and call the getMovieList function for display
 // how?
@@ -185,13 +187,13 @@ searchForm.addEventListener("submit", (event) => {
     // debug here - ok fixed - was url issue above - search not base
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       // not for feature - we can use the author to again search for related films that have that author on crew (implement later)
       // take the first movie returned - this is usually the main one we want
       if (data.results.length > 0) {
         var movieId = data.results[0].id;
         var creditsURL = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKeyMovieDB}`;
-        console.log(creditsURL);
+        // console.log(creditsURL);
         return fetch(creditsURL);
       } else {
         throw new Error(
@@ -201,7 +203,7 @@ searchForm.addEventListener("submit", (event) => {
     })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       var author = data.crew.filter(
         (person) =>
           person.job === "Novel" ||
@@ -290,13 +292,13 @@ $(document).on("click", ".btn", function () {
     // debug here - ok fixed - was url issue above - search not base
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       // not for feature - we can use the author to again search for related films that have that author on crew (implement later)
       // take the first movie returned - this is usually the main one we want
       if (data.results.length > 0) {
         var movieId = data.results[0].id;
         var creditsURL = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKeyMovieDB}`;
-        console.log(creditsURL);
+        // console.log(creditsURL);
         return fetch(creditsURL);
       } else {
         // can't use return - use throw to stop the function here?
@@ -307,7 +309,7 @@ $(document).on("click", ".btn", function () {
     })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       var author = data.crew.filter(
         (person) =>
           person.job === "Novel" ||
