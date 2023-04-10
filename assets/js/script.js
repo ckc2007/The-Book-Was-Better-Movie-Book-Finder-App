@@ -270,6 +270,7 @@ getAllTimeTopMovies().then((html) => {
 $(document).on("click", ".btn", function () {
   var movieTitle = $(this).attr("id");
   // searchHistoryArr.push(movieTitle);
+  authorList.innerHTML = "";
   titlesArr = [];
   titlesArr.push(movieTitle);
   // titlesArr.push(movieTitle);
