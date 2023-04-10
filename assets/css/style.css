@@ -19,7 +19,9 @@ nav {
   justify-content: space-evenly;
 }
 
-h3 {
+h3,
+h4,
+h5 {
   text-align: center;
 }
 
@@ -97,4 +99,14 @@ button {
   width: 100%;
   height: 100%;
   margin: 0;
+}
+/* added this for save list button display */
+.btn {
+  color: black;
+  border-radius: 5px;
+  background-color: rgb(221, 240, 246);
+  margin-bottom: 5px;
+  font-size: large;
+  width: 100%;
+  text-align: center;
 }
