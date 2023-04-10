@@ -27,7 +27,10 @@ h5 {
 
 button {
   width: 75px;
+  background-color: rgb(211, 230, 242);
   border: 3px solid black;
+  border-radius: 20px;
+  padding: 2px;
 }
 
 .bookTitle,
@@ -109,6 +112,36 @@ button {
   font-size: large;
   width: 100%;
   text-align: center;
+}
+
+.btn:hover {
+  background-color: turquoise;
+  transition: all 0.3s ease-in-out;
+  font-size: 120%;
+}
+
+button:hover {
+  background-color: turquoise;
+  transition: all 0.3s ease-in-out;
+  font-size: 110%;
+}
+
+.navBtn {
+  /* border: 2px solid black; */
+}
+
+.navBtn:hover {
+  /* background-color: turquoise; */
+  transition: all 0.3s ease-in-out;
+  font-size: 110%;
+  font-weight: bolder;
+  color: aqua;
+}
+
+#clearBtn:hover {
+  background-color: magenta;
+  transition: all 0.3s ease-in-out;
+  font-size: 110%;
 }
 
 li {
