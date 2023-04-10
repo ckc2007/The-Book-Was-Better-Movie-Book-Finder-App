@@ -129,8 +129,8 @@ function getBookList() {
         bookList.innerHTML = "";
         books.forEach((book) => {
           var liEl = document.createElement("li");
-          var titleEl = document.createElement("h3");
-          var authorEl = document.createElement("h4");
+          var titleEl = document.createElement("h4");
+          var authorEl = document.createElement("h5");
           var link = document.createElement("a");
           var imgEl = document.createElement("img");
           var isbnEl = document.createElement("p");
