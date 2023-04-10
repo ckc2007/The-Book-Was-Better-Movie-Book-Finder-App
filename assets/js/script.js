@@ -4,6 +4,7 @@ const searchMovieURL = `${baseMovieURL}/search/movie`;
 const searchCreditsMovieURL = `${baseMovieURL}/movie/{{id}}/credits`;
 // document selectors for displaying information to HTML
 const searchForm = document.getElementById("search-form");
+const searchContainer = document.getElementById("search-container");
 // we only need one input for title (ether book or movie)
 const movieTitleInput = document.getElementById("movie-title");
 // using author list in the get author section
@@ -259,4 +260,64 @@ getAllTimeTopMovies().then((html) => {
   // insert the HTML into the DOM
   const container = document.getElementById("movie-container");
   container.innerHTML = html;
+});
+
+$(document).on("click", ".btn", function () {
+  var movieTitle = $(this).attr("id");
+  // searchHistoryArr.push(movieTitle);
+  // titlesArr.push(movieTitle);
+  bookList.innerHTML = "";
+  movieList.innerHTML = "";
+  // call the get movie list function so the list appears upon the search button being clicked
+  getMovieList();
+  getBookList();
+  // now do a fetch to get the name of the author
+  const urlAuth = `${searchMovieURL}?api_key=${apiKeyMovieDB}&query=${encodeURIComponent(
+    movieTitle
+  )}`;
+  // saveLocal();
+  // renderSavedSearch();
+
+  fetch(urlAuth)
+    // debug here - ok fixed - was url issue above - search not base
+    .then((response) => response.json())
+    .then((data) => {
+      // console.log(data);
+      // not for feature - we can use the author to again search for related films that have that author on crew (implement later)
+      // take the first movie returned - this is usually the main one we want
+      if (data.results.length > 0) {
+        var movieId = data.results[0].id;
+        var creditsURL = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKeyMovieDB}`;
+        // console.log(creditsURL);
+        return fetch(creditsURL);
+      } else {
+        throw new Error(
+          `Sorry, can't find a movie with the title: "${movieTitle}"`
+        );
+      }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      // console.log(data);
+      var author = data.crew.filter(
+        (person) =>
+          person.job === "Novel" ||
+          person.job === "Writer" ||
+          person.job === "Author" ||
+          person.job === "Short Story"
+      );
+      // clear the booklist
+      authorList.innerHTML = "";
+      if (author.length > 0) {
+        author.forEach((author) => {
+          var liEl = document.createElement("p");
+          liEl.textContent = author.name;
+          authorList.appendChild(liEl);
+        });
+      } else {
+        var liEl = document.createElement("li");
+        liEl.textContent = "No author found";
+        authorList.appendChild(liEl);
+      }
+    });
 });
