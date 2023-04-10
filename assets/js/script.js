@@ -233,29 +233,40 @@ const getAllTimeTopMovies = () => {
   )
     .then((response) => response.json())
     .then((data) => {
+      // these are the top 20 or so films by rating
+      // console.log(data);
       const moviePromises = data.results.map((movie) => {
         const creditsURL = `https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${apiKeyMovieDB}`;
         return fetch(creditsURL).then((response) => response.json());
       });
+      // console.log(moviePromises)
 
       return Promise.all(moviePromises).then((creditsData) => {
         const movieList = data.results.filter((movie, index) => {
+          // this is the credit data for the above list
+          // console.log(creditsData);
+          // look at the crew data property for each film
           const crew = creditsData[index].crew;
+          // filter the crew list to find those that have the following jobs
           const author = crew.find(
             (person) =>
               person.job === "Novel" ||
               person.job === "Author" ||
               person.job === "Short Story"
           );
+          // finds the author if the job exists in the credits
           return author;
         });
+        // slice the list to show up to 10 movies that have an author
+        // remember this is an array
         const top5Movies = movieList.slice(0, 11);
+        console.log(top5Movies);
         const movieEl = top5Movies.map((movie) => {
           const posterUrl = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;
           const movieUrl = `https://www.themoviedb.org/movie/${movie.id}`;
           return `<a href="${movieUrl}"><img src="${posterUrl}" /></a>`;
         });
-        // sends the entire list to the container
+        // concats the list of links/images
         return movieEl.join("");
       });
     });
