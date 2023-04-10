@@ -27,29 +27,30 @@
         <h1>The Book Was Better...</h1>
       </header>
       <nav class="main-nav">
-        <a href="#movie search">Movie Search</a>
-        <a href="#bookSearch">Book Search</a>
-        <a href="#my lists">My Lists</a>
+        <a href="#search-form">Search</a>
+        <a href="#movie-list">Movie List</a>
+        <a href="#book-list">Book List</a>
+        <a href="#my-lists">My Lists</a>
       </nav>
       <main>
-        <h3>Trending Now</h3>
+        <h3>Trending Movies Based On Books - All Time</h3>
         <div class="container2">
-          <div class="carousel">
-            <a class="carousel-item" href="#one!"></a>
+          <div class="carousel" id="movie-container">
+            <!-- <a class="carousel-item" href="#one!"></a>
             <a class="carousel-item" href="#two!"></a>
             <a class="carousel-item" href="#three!"></a>
             <a class="carousel-item" href="#four!"></a>
-            <a class="carousel-item" href="#five!"></a>
+            <a class="carousel-item" href="#five!"></a> -->
           </div>
         </div>
-        <h1>...or was it?</h1>
+        <h2>...or was it?</h2>
         <h3>
           Has your favorite book been turned into a movie? Search below to find
           out!
         </h3>
         <div id="bookSearch">
           <form id="search-form">
-            <label for="movie-title">Enter a book title and author name</label>
+            <label for="movie-title">Enter a book or movie title:</label>
             <input
               type="text"
               class="bookTitle"
@@ -57,19 +58,23 @@
               name="movie-title"
               placeholder="Title"
             />
-            <input
+            <!-- <input
               type="text"
               class="author"
               id="author-name"
               name="author-name"
               placeholder="Author"
-            />
+            /> -->
             <button type="submit" class="button">Search</button>
           </form>
-
+          <!-- movies based on books -->
+          <h3>Movies Based on Books</h1>
+          <ul id="movie-list"></ul>
+          <!-- book list -->
+          <h3>The Books</h1>
           <ul id="book-list"></ul>
         </div>
-        <div class="container3">
+        <!-- <div class="container3">
           <section class="image">Image placeholder</section>
           <section class="movieInfo">Facts About Movies?</section>
           <section class="movieReviews">Movie Review/Rotten Tomatoes</section>
@@ -83,7 +88,7 @@
         <section class="similar-books">
           <button class="button" type="button">Add to my read list</button>
           <button class="button" type="button">Similar Books</button>
-        </section>
+        </section> -->
 
         <footer>The book was better or was it? 2023</footer>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
