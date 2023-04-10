@@ -139,6 +139,9 @@ function getBookList() {
           var imgEl = document.createElement("img");
           var blurbEl = document.createElement("p");
           titleEl.textContent = book.volumeInfo.title;
+          // console.log(book);
+          // console.log(book.volumeInfo);
+          // TODO insert an if statement her to check for presence of authors property
           authorEl.textContent = book.volumeInfo.authors[0];
           link.href = book.volumeInfo.infoLink;
           if (book.volumeInfo.imageLinks) {
@@ -159,8 +162,6 @@ function getBookList() {
       });
   });
 }
-
-
 
 // this function gets the AUTHOR and call the getMovieList function for display
 // how?
