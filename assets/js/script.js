@@ -165,6 +165,7 @@ searchForm.addEventListener("submit", (event) => {
   event.preventDefault();
   var movieTitle = title(movieTitleInput.value);
   searchHistoryArr.push(movieTitle);
+  titlesArr = [];
   titlesArr.push(movieTitle);
   bookList.innerHTML = "";
   movieList.innerHTML = "";
@@ -265,9 +266,11 @@ getAllTimeTopMovies().then((html) => {
 $(document).on("click", ".btn", function () {
   var movieTitle = $(this).attr("id");
   // searchHistoryArr.push(movieTitle);
+  titlesArr = [];
+  titlesArr.push(movieTitle);
   // titlesArr.push(movieTitle);
-  bookList.innerHTML = "";
-  movieList.innerHTML = "";
+  // bookList.innerHTML = "";
+  // movieList.innerHTML = "";
   // call the get movie list function so the list appears upon the search button being clicked
   getMovieList();
   getBookList();
