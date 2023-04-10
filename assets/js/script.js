@@ -270,6 +270,7 @@ getAllTimeTopMovies().then((html) => {
 $(document).on("click", ".btn", function () {
   var movieTitle = $(this).attr("id");
   // searchHistoryArr.push(movieTitle);
+  authorList.innerHTML = "";
   titlesArr = [];
   titlesArr.push(movieTitle);
   // titlesArr.push(movieTitle);
@@ -298,6 +299,7 @@ $(document).on("click", ".btn", function () {
         console.log(creditsURL);
         return fetch(creditsURL);
       } else {
+        // can't use return - use throw to stop the function here?
         throw new Error(
           `Sorry, can't find a movie with the title: "${movieTitle}"`
         );
