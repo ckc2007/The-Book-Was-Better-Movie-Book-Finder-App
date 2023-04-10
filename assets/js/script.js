@@ -16,56 +16,12 @@ const authorInput = document.getElementById("author-input");
 // use for save to local storage??
 var titlesArr = [];
 var authorsArr = [];
+var searchHistoryArr = [];
 // book constants below
 const apiKeyBooks = "AIzaSyCglMf-pcXxWk1kbsxscoPr26PL-PStIYU";
 const baseBookURL = "https://www.googleapis.com/books/v1";
 const searchBookURL = `${baseBookURL}/volumes`;
 
-// // local storage
-// if (localStorage.getItem("search-history") !== null) {
-//   searchHistoryArr = JSON.parse(localStorage.getItem("search-history"));
-//   searchHistoryListEl.innerHTML = "";
-//   console.log(searchHistoryArr);
-//   renderSavedSearch();
-// }
-// // add arr to local storage
-// function saveLocal() {
-//   localStorage.setItem("search-history", JSON.stringify(searchHistoryArr));
-// }
-// //   add city to the saved search list
-// function renderSavedSearch() {
-//   searchHistoryListEl.innerHTML = "";
-//   console.log(searchHistoryArr);
-//   for (var i = 0; i < searchHistoryArr.length; i++) {
-//     var buttonEl = document.createElement("button");
-//     buttonEl.setAttribute("id", `${searchHistoryArr[i]}`);
-//     buttonEl.classList.add("btn");
-//     buttonEl.textContent = searchHistoryArr[i].toString();
-//     searchHistoryListEl.appendChild(buttonEl);
-//     var breakEl = document.createElement("br");
-//     searchHistoryListEl.appendChild(breakEl);
-//   }
-//   saveLocal();
-// }
-
-// renderSavedSearch();
-
-// need a tile case function here:
-// function title(string) {
-//   return string
-//     .toLowerCase()
-//     .split(" ")
-//     .map(function (word) {
-//       return word.charAt(0).toUpperCase() + word.slice(1);
-//     })
-//     .join(" ");
-// }
-
-// clearSearchBtn.addEventListener("click", function () {
-//   localStorage.removeItem("search-history");
-//   searchHistoryListEl.innerHTML = "";
-//   searchHistoryArr = [];
-// });
 
 // book title for search will be the movie title input
 // var bookTitleInput = movieTitleInput.value;
@@ -250,4 +206,51 @@ getAllTimeTopMovies().then((html) => {
   // insert the HTML into the DOM
   const container = document.getElementById("movie-container");
   container.innerHTML = html;
+});
+
+
+// local storage
+if (localStorage.getItem("search-history") !== null) {
+  searchHistoryArr = JSON.parse(localStorage.getItem("search-history"));
+  searchHistoryListEl.innerHTML = "";
+  console.log(searchHistoryArr);
+  renderSavedSearch();
+}
+// add arr to local storage
+function saveLocal() {
+  localStorage.setItem("search-history", JSON.stringify(searchHistoryArr));
+}
+//   add city to the saved search list
+function renderSavedSearch() {
+  searchHistoryListEl.innerHTML = "";
+  console.log(searchHistoryArr);
+  for (var i = 0; i < searchHistoryArr.length; i++) {
+    var buttonEl = document.createElement("button");
+    buttonEl.setAttribute("id", `${searchHistoryArr[i]}`);
+    buttonEl.classList.add("btn");
+    buttonEl.textContent = searchHistoryArr[i].toString();
+    searchHistoryListEl.appendChild(buttonEl);
+    var breakEl = document.createElement("br");
+    searchHistoryListEl.appendChild(breakEl);
+  }
+  saveLocal();
+}
+
+renderSavedSearch();
+
+// need a tile case function here:
+// function title(string) {
+//   return string
+//     .toLowerCase()
+//     .split(" ")
+//     .map(function (word) {
+//       return word.charAt(0).toUpperCase() + word.slice(1);
+//     })
+//     .join(" ");
+// }
+
+clearSearchBtn.addEventListener("click", function () {
+  localStorage.removeItem("search-history");
+  searchHistoryListEl.innerHTML = "";
+  searchHistoryArr = [];
 });
